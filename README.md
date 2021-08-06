@@ -1,8 +1,10 @@
 # Setup the environment
+```
 kubectl apply -f custom_resource_definition.yaml
 kubectl apply -f permissions.yaml
 kubectl apply -f php-client.yaml
 kubectl apply -f mywebserver.yaml
+```
 
 # Trigger the Control Loop
 Just to keep things imple, I am not running the control loop script automcatically. You need to call it manually
