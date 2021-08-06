@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-client
+  template:
+    metadata:
+      labels:
+        app: php-client
+    spec:
+      serviceAccountName: mywebservers-sa
+      containers:
+        - name: n1
+          image: gayatrisa/learn-k8s:client
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-client
+spec:
+  selector:
+    app: php-client
+  type: NodePort
+  ports:
+    - port: 9800
+      targetPort: 80
+      nodePort: 31000

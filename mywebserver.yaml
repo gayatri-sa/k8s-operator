@@ -1,0 +1,8 @@
+apiVersion: "k8sobjects.gsa.com/v2"
+kind: MyWebserver
+metadata:
+  name: mws3
+spec:
+  image: nginx
+  port: 80
+  replicas: 2

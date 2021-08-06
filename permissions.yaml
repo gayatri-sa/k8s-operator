@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mywebservers-sa
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mywebservers-cr
+rules:
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - list
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments"]
+  verbs: ['*']
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+   - '*'
+- apiGroups:
+  - "k8sobjects.gsa.com"
+  - "k8sobjects.gsa.com/v2"
+  resources:
+  - mywebservers
+  verbs:
+   - '*'
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: mywebservers-crb
+subjects:
+- kind: ServiceAccount
+  name: mywebservers-sa
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: mywebservers-cr
+  apiGroup: rbac.authorization.k8s.io
