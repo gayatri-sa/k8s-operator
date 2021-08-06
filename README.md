@@ -1,5 +1,3 @@
-YAML to JSON converter: https://onlineyamltools.com/convert-yaml-to-json
-
 # Setup the environment
 kubectl apply -f custom_resource_definition.yaml
 kubectl apply -f permissions.yaml
@@ -51,3 +49,4 @@ This script is absolutely NOT intended to be used in any production environment.
 # Inspired By (with gratitude)
 + https://github.com/travisghansen/kubernetes-client-php
 + https://www.baeldung.com/java-kubernetes-watch
++ YAML to JSON converter: https://onlineyamltools.com/convert-yaml-to-json
